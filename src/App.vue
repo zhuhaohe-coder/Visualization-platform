@@ -1,6 +1,12 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
+import { onMounted } from 'vue'
 import HelloWorld from './components/HelloWorld.vue'
+import { getPowerScreenData } from './services/index'
+onMounted(async () => {
+  const data: any = await getPowerScreenData()
+  console.log(data.data.data)
+})
 </script>
 
 <template>
