@@ -11,4 +11,5 @@ body {
   box-sizing: border-box;
 
   transform-origin: left top;
+  overflow: hidden;
 }
