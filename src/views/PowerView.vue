@@ -26,7 +26,13 @@
       </div>
       <div class="right">
         <div class="right-top"></div>
-        <div class="right-center"></div>
+        <div class="right-center">
+          <MyEcharts
+            v-if="chargingStatistics.length"
+            :echart-datas="chargingStatistics"
+            :type="'bar'"
+          ></MyEcharts>
+        </div>
         <div class="right-bottom"></div>
       </div>
     </div>

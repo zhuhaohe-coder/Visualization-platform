@@ -6,7 +6,11 @@
 import * as echarts from 'echarts'
 import { onMounted, ref, watch } from 'vue'
 import useEchart from '@/hooks/useEcharts'
-import { getPieChartOption, getLineChartOption } from '@/components/echarts/chartOptions'
+import {
+  getPieChartOption,
+  getLineChartOption,
+  getBarChartOption
+} from '@/components/echarts/chartOptions'
 
 const divRef = ref<HTMLDivElement>()
 const props = withDefaults(
@@ -52,6 +56,8 @@ function setupEcharts(echartsData: any[]) {
     option = getPieChartOption(echartsData)
   } else if (props.type === 'line') {
     option = getLineChartOption(echartsData)
+  } else if (props.type === 'bar') {
+    option = getBarChartOption(echartsData)
   }
   myChart.setOption(option)
 }
