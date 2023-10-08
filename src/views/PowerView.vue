@@ -4,9 +4,21 @@
     <div class="container">
       <div class="left">
         <div class="left-top">
-          <PieEcharts :echart-datas="chargingPile"></PieEcharts>
+          <!-- 饼图-->
+          <MyEcharts
+            v-if="chargingPile.length"
+            :echart-datas="chargingPile"
+            :type="'pie'"
+          ></MyEcharts>
         </div>
-        <div class="left-bottom"></div>
+        <div class="left-bottom">
+          <!-- 折线图 -->
+          <MyEcharts
+            v-if="processMonitoring.length"
+            :echart-datas="processMonitoring"
+            :type="'line'"
+          ></MyEcharts>
+        </div>
       </div>
       <div class="center">
         <div class="center-top"></div>
@@ -24,7 +36,7 @@
 <script setup lang="ts">
 import { getPowerScreenData } from '@/services'
 import { ref } from 'vue'
-import PieEcharts from '@/components/PieEcharts.vue'
+import MyEcharts from '@/components/MyEcharts.vue'
 // 充电桩饱和比例
 const chargingPile = ref([])
 // 流程监控

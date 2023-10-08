@@ -6,12 +6,13 @@
 import * as echarts from 'echarts'
 import { onMounted, ref, watch } from 'vue'
 import useEchart from '@/hooks/useEcharts'
-import { getPieChartOption } from '@/components/echarts/chartOptions'
+import { getPieChartOption, getLineChartOption } from '@/components/echarts/chartOptions'
 
 const divRef = ref<HTMLDivElement>()
 const props = withDefaults(
   defineProps<{
     echartDatas: any[]
+    type: string
     width?: number | string
     height?: number | string
   }>(),
@@ -29,6 +30,8 @@ watch(
 )
 
 onMounted(() => {
+  console.log(props.echartDatas)
+
   setupEcharts(props.echartDatas)
 })
 
@@ -44,7 +47,12 @@ function setupEcharts(echartsData: any[]) {
   if (!myChart) {
     myChart = useEchart(divRef.value as HTMLDivElement)
   }
-  const option = getPieChartOption(echartsData)
+  let option = {}
+  if (props.type === 'pie') {
+    option = getPieChartOption(echartsData)
+  } else if (props.type === 'line') {
+    option = getLineChartOption(echartsData)
+  }
   myChart.setOption(option)
 }
 </script>
