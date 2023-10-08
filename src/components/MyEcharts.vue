@@ -34,8 +34,6 @@ watch(
 )
 
 onMounted(() => {
-  console.log(props.echartDatas)
-
   setupEcharts(props.echartDatas)
 })
 

@@ -24,7 +24,9 @@
         <div class="center-top">
           <CenterSVG></CenterSVG>
         </div>
-        <div class="center-bottom"></div>
+        <div class="center-bottom">
+          <DataAnalysis v-if="dataAnalysis.length" :panel-item="dataAnalysis"></DataAnalysis>
+        </div>
       </div>
       <div class="right">
         <div class="right-top"></div>
@@ -46,6 +48,7 @@ import { getPowerScreenData } from '@/services'
 import { ref } from 'vue'
 import MyEcharts from '@/components/MyEcharts.vue'
 import CenterSVG from '@/components/CenterSVG.vue'
+import DataAnalysis from '@/components/DataAnalysis.vue'
 // 充电桩饱和比例
 const chargingPile = ref([])
 // 流程监控
