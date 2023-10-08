@@ -21,7 +21,9 @@
         </div>
       </div>
       <div class="center">
-        <div class="center-top"></div>
+        <div class="center-top">
+          <CenterSVG></CenterSVG>
+        </div>
         <div class="center-bottom"></div>
       </div>
       <div class="right">
@@ -43,6 +45,7 @@
 import { getPowerScreenData } from '@/services'
 import { ref } from 'vue'
 import MyEcharts from '@/components/MyEcharts.vue'
+import CenterSVG from '@/components/CenterSVG.vue'
 // 充电桩饱和比例
 const chargingPile = ref([])
 // 流程监控
