@@ -3,7 +3,9 @@
     <div class="header"></div>
     <div class="container">
       <div class="left">
-        <div class="left-top"></div>
+        <div class="left-top">
+          <PieEcharts :echart-datas="chargingPile"></PieEcharts>
+        </div>
         <div class="left-bottom"></div>
       </div>
       <div class="center">
@@ -22,18 +24,19 @@
 <script setup lang="ts">
 import { getPowerScreenData } from '@/services'
 import { ref } from 'vue'
+import PieEcharts from '@/components/PieEcharts.vue'
 // 充电桩饱和比例
-const chargingPile = ref({})
+const chargingPile = ref([])
 // 流程监控
-const processMonitoring = ref({})
+const processMonitoring = ref([])
 // 充电桩数据分析
-const chargingStatistics = ref({})
+const chargingStatistics = ref([])
 // 异常监控
-const exceptionMonitoring = ref({})
+const exceptionMonitoring = ref([])
 // 充电桩数据分析
-const dataAnalysis = ref({})
+const dataAnalysis = ref([])
 // 充电桩Top4占比
-const chargingTop4 = ref({})
+const chargingTop4 = ref([])
 const percentage = ref([])
 
 getPowerScreenData().then((res: any) => {
