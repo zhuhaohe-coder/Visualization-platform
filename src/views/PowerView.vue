@@ -29,7 +29,9 @@
         </div>
       </div>
       <div class="right">
-        <div class="right-top"></div>
+        <div class="right-top">
+          <RightTop :panelItems="chargingTop4" :percentage="percentage"></RightTop>
+        </div>
         <div class="right-center">
           <MyEcharts
             v-if="chargingStatistics.length"
@@ -49,6 +51,7 @@ import { ref } from 'vue'
 import MyEcharts from '@/components/MyEcharts.vue'
 import CenterSVG from '@/components/CenterSVG.vue'
 import DataAnalysis from '@/components/DataAnalysis.vue'
+import RightTop from '@/components/RightTop.vue'
 // 充电桩饱和比例
 const chargingPile = ref([])
 // 流程监控
@@ -61,7 +64,7 @@ const exceptionMonitoring = ref([])
 const dataAnalysis = ref([])
 // 充电桩Top4占比
 const chargingTop4 = ref([])
-const percentage = ref([])
+const percentage = ref(0)
 
 getPowerScreenData().then((res: any) => {
   chargingPile.value = res.data.data.chargingPile.data
